@@ -1,0 +1,31 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    //  Prompt for start size
+    int startingSize, endingSize, years;
+    do
+    {
+        startingSize = get_int("start size of llamas: ");
+    }
+    while (startingSize < 9);
+
+    //  Prompt for end size
+    do
+    {
+        endingSize = get_int("end size of llamas: ");
+    }
+    while (endingSize < startingSize);
+
+    //  Calculate number of years until we reach threshold
+    years = 0;
+    while (endingSize > startingSize)
+    {
+        startingSize = startingSize + (startingSize / 3) - (startingSize / 4);
+        years++;
+    }
+
+    //  Print number of years
+    printf("Years: %i\n", years);
+}
