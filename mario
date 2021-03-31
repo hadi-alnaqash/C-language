@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    int i, j, s, height;
+     
+       
+    do  // re-prompt the user until they cooperate numbers between 1 & 8
+    {
+        height = get_int("enter the height between 1 & 8 :  ");
+            
+    }
+    while (height <= 0 || height >= 9);
+    
+    for (i = 1; i <= height; i++)  //starting new line loop(main loop)
+    {
+       
+        for (s = height; s >= i + 1 ; s--) //printing spaces at the beginning
+        {
+            printf(" ");
+        }
+        for (j = 1 ; j <= i ; j++) //printing first block of #
+        {
+            printf("#");
+        }
+        for (s = 1 ; s <= 2 ; s++) // printing spaces between two blocks
+        {
+            printf(" ");
+        }
+        for (j = 1 ; j <= i ; j++) //printing second block of #
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+   
+   
+ 
+}
