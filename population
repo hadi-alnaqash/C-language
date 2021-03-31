@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    long int number, number2;
+    int sum, sum2, s, d;
+    long int  number3 ;
+    //prompet user to enter credit number
+    do
+    {
+        number = get_long("enter your credit number : ");
+    }
+    while (number == 0);
+    
+    //to get the credit number that user enterd when Luhn’s Algorithm end
+    number2 = number + 0; 
+    number3 = number + 0;
+    //note that the credit number will be equal to zero at the end of Luhn’s Algorithm code
+    
+    //start of Luhn’s Algorithm
+    while (number)
+    {
+        number /= 10;
+        s = number % 10;
+        d = s * 2;
+        sum = sum + (d % 10)  + (d / 10) ;
+        number /= 10;
+    }
+
+
+
+    while (number2)
+    {
+        int lastDigit = number2 % 10 ;
+        sum2 = sum2 + number2 % 10 ;
+        number2 /= 100;
+    }
+
+
+    int lastSum = sum2 + sum ;
+    int zeroDigit = lastSum % 10;
+    //end of Luhn’s Algorithm
+    
+    //check the validation of credit number 
+    if (zeroDigit != 0)
+    {
+        printf("INVALID\n");
+    }
+        
+    else
+        //check the type of credit number 
+        if (number3 >= 5100000000000000 && number3 <= 5599999999999999)
+        {
+            printf("MASTERCARD\n");
+        }
+        else if (number3 >= 340000000000000 && number3 <= 349999999999999)
+        {
+            printf("AMEX\n");
+        }
+        else if (number3 >= 370000000000000 && number3 <= 379999999999999)
+        {
+            printf("AMEX\n");
+        }
+        else if (number3 >= 4000000000000 && number3 <= 4999999999999)
+        {
+            printf("VISA\n");
+        }
+        else if (number3 >= 4000000000000000 && number3 <= 4999999999999999)
+        {
+            printf("VISA\n");
+        }
+        else  //if the credit number did't match any type, then it is invalid
+        {
+            printf("INVALID\n");
+        }
+}
